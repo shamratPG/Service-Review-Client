@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layouts/Main/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
 import Home from "../../Pages/Home/Home";
+import LogIn from "../../Pages/LogIn/LogIn";
+import Register from "../../Pages/Register/Register";
 import ServiceDetails from "../../Pages/ServiceDetails/ServiceDetails";
 import Services from "../../Pages/Services/Services";
 
@@ -25,7 +27,15 @@ const routes = createBrowserRouter([
             {
                 path: '/services/:serviceId',
                 element: <ServiceDetails></ServiceDetails>
-            }
+            },
+            {
+                path: '/logIn',
+                element: <LogIn></LogIn>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
+            },
         ]
     }
 ])

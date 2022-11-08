@@ -7,9 +7,9 @@ const ServiceSection = () => {
         <div className='flex flex-col items-center my-12'>
             <h2 className='text-3xl'>Service Section</h2>
             <div className='grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8 w-full'>
-                <ServiceCard></ServiceCard>
-                <ServiceCard></ServiceCard>
-                <ServiceCard></ServiceCard>
+                {
+                    [...Array(3).keys()].map(number => <ServiceCard></ServiceCard>)
+                }
             </div>
             <button className='btn btn-outline'>
                 <Link to={'/services'}>See All</Link>

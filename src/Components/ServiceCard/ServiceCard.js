@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ServiceCard = () => {
     return (
@@ -8,7 +9,9 @@ const ServiceCard = () => {
                 <h2 className="card-title">Shoes!</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-outline">Buy Now</button>
+                    <button className="btn btn-outline">
+                        <Link>View Details</Link>
+                    </button>
                 </div>
             </div>
         </div>
