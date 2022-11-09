@@ -54,6 +54,7 @@ const Header = () => {
                     <li><Link to={'/'}>Home</Link></li>
                     <li><Link to={'/services'}>Services</Link></li>
                     <li><Link to={'/addService'}>Add Service</Link></li>
+                    <li><Link to={'/myReviews'}>My Review</Link></li>
                     <li><Link to={'/blogs'}>Blogs</Link></li>
 
                     {/* Full Menu  */}
