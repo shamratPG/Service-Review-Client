@@ -2,12 +2,29 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThirdPartyAuth from '../../Components/ThirdPartyAuth/ThirdPartyAuth';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const LogIn = () => {
 
+    const { logIn } = useContext(AuthContext);
+
+    const handleLogIn = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        logIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+            })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className='py-12 bg-base-200 px-2'>
-            <form className="form-control w-full sm:w-3/5 mx-auto bg-base-100 rounded-lg p-8 py-16 flex justify-center items-center shadow-lg">
+            <form onSubmit={handleLogIn} className="form-control w-full sm:w-3/5 mx-auto bg-base-100 rounded-lg p-8 py-16 flex justify-center items-center shadow-lg">
                 <h1 className='font-semibold text-2xl'>Please Log In</h1>
                 <div className='my-5'>
                     <label className="input-group">

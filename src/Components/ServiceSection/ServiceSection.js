@@ -19,9 +19,11 @@ const ServiceSection = () => {
                     services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
             </div>
-            <button className='btn btn-outline'>
-                <Link to={'/services'}>See All</Link>
-            </button>
+            <Link to={'/services'}>
+                <button className='btn btn-outline'>
+                    All Services
+                </button>
+            </Link>
         </div>
     );
 };
