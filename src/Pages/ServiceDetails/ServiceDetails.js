@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import AddReview from '../../Components/AddReview/AddReview';
+import ReviewItem from '../../Components/ReviewItem/ReviewItem';
 
 const ServiceDetails = () => {
     const service = useLoaderData()[0];
     const { description, image, price, ratings, serviceName, _id } = service;
+
+    const [reviews, setReviews] = useState([]);
+
+
+    useEffect(() => {
+        fetch(`https://mr-photographer-server-shamratpg.vercel.app/reviews?serviceId=${_id}`)
+            .then(res => res.json())
+            .then(data => setReviews(data));
+    }, [service])
     return (
         <div>
             {/* Service Section  */}
@@ -25,7 +36,14 @@ const ServiceDetails = () => {
                     </div>
                 </div>
             </div>
+
+
             {/* Review Section  */}
+            <h2 className="text-3xl text-center font-semibold mt-8">Reviews</h2>
+            {
+                reviews.map(review => <ReviewItem key={review._id} review={review}></ReviewItem>)
+            }
+            <AddReview service={service}></AddReview>
         </div>
     );
 };

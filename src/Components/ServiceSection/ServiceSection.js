@@ -6,7 +6,7 @@ const ServiceSection = () => {
 
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('https://mr-photographer-server.vercel.app/services?size=3')
+        fetch('https://mr-photographer-server-shamratpg.vercel.app/services?size=3')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

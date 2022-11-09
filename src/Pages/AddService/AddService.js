@@ -13,7 +13,7 @@ const AddService = () => {
         const newService = { serviceName, ratings, price, description, image };
         // console.log(newService);
 
-        fetch('https://mr-photographer-server.vercel.app/services', {
+        fetch('https://mr-photographer-server-shamratpg.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -50,7 +50,7 @@ const AddService = () => {
                         <label className="label">
                             <span className="label-text">Image URL</span>
                         </label>
-                        <input type="text" placeholder="Service Name" className="input input-bordered w-full max-w-xs" name="image" />
+                        <input type="text" placeholder="Image URL" className="input input-bordered w-full max-w-xs" name="image" />
                     </div>
 
                     {/* Rating  */}

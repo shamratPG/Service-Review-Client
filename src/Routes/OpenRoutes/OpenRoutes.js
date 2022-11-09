@@ -29,7 +29,7 @@ const routes = createBrowserRouter([
                 path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
                 loader: async ({ params }) => {
-                    return fetch(`https://mr-photographer-server.vercel.app/services/${params.id}`);
+                    return fetch(`https://mr-photographer-server-shamratpg.vercel.app/services/${params.id}`);
                 }
             },
             {
