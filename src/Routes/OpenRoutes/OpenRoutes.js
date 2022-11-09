@@ -26,8 +26,11 @@ const routes = createBrowserRouter([
                 element: <Blogs></Blogs>
             },
             {
-                path: '/services/:serviceId',
-                element: <ServiceDetails></ServiceDetails>
+                path: '/services/:id',
+                element: <ServiceDetails></ServiceDetails>,
+                loader: async ({ params }) => {
+                    return fetch(`https://mr-photographer-server.vercel.app/services/${params.id}`);
+                }
             },
             {
                 path: '/addService',
