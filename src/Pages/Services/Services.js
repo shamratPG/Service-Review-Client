@@ -4,10 +4,14 @@ import ServiceCard from '../../Components/ServiceCard/ServiceCard';
 
 const Services = () => {
     const [services, setServices] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('https://mr-photographer-server-shamratpg.vercel.app/services')
+        fetch('https://mr-photographer-server.vercel.app/services')
             .then(res => res.json())
-            .then(data => setServices(data))
+            .then(data => {
+                setLoading(false);
+                setServices(data);
+            })
     }, [])
     return (
         <div>
@@ -17,9 +21,18 @@ const Services = () => {
                 </title>
             </Helmet>
             <h1 className='text-5xl text-center mt-12'>All Services</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8 px-'>
+
+
+            <div className='flex justify-center'>
                 {
-                    services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
+                    loading ?
+                        <progress className="progress w-56 my-40"></progress>
+                        :
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8 px-'>
+                            {
+                                services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
+                            }
+                        </div>
                 }
             </div>
         </div>

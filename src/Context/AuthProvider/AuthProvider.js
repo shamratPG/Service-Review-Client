@@ -11,11 +11,11 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loader, setLoader] = useState(true);
 
     // Create new user with email & password 
     const createUser = (email, password) => {
-        setLoading(true);
+        setLoader(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
@@ -28,13 +28,13 @@ const AuthProvider = ({ children }) => {
 
     // Sign in user with email & password 
     const logIn = (email, password) => {
-        setLoading(true);
+        setLoader(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     // Pop Up sign In 
     const providerLogin = provider => {
-        // setLoading(true);
+        setLoader(true);
         return signInWithPopup(auth, provider)
     }
 
@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            setLoading(false);
+            setLoader(false);
         });
         return () => {
             return unsubscribe();
@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
     }, [])
     const authInfo = {
         user,
-        loading,
+        loader,
         createUser,
         logIn,
         providerLogin,

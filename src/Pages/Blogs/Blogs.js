@@ -4,12 +4,16 @@ import BlogItem from '../../Components/BlogItem/BlogItem';
 
 const Blogs = () => {
 
+    const [loading, setLoading] = useState(true)
     const [blogs, setBlogs] = useState([])
 
     useEffect(() => {
-        fetch('https://mr-photographer-server-shamratpg.vercel.app/blogs')
+        fetch('https://mr-photographer-server.vercel.app/blogs')
             .then(res => res.json())
-            .then(data => setBlogs(data))
+            .then(data => {
+                setLoading(false);
+                setBlogs(data);
+            })
     }, [])
 
 
@@ -23,9 +27,19 @@ const Blogs = () => {
                 </title>
             </Helmet>
             <h1 className='text-4xl font-semibold text-center mt-12'>Blogs</h1>
-            {
-                blogs.map(blog => <BlogItem key={blog._id} blog={blog}></BlogItem>)
-            }
+            <div className='flex justify-center'>
+                {
+                    loading ?
+                        <progress className="progress w-56 my-40 mx-auto"></progress> :
+                        <div>
+                            {
+                                blogs.map(blog => <BlogItem key={blog._id} blog={blog}></BlogItem>)
+                            }
+                        </div>
+
+                }
+            </div>
+
         </div>
     );
 };

@@ -10,7 +10,7 @@ const ReviewItem = ({ review }) => {
                     <img className='rounded-full' src={photoURL} alt="" />
                 </div>
                 <h2 className="card-title">{userName}</h2>
-                <p>{reviewData}</p>
+                <p className='text-slate-500'>{reviewData}</p>
             </div>
         </div>
     );

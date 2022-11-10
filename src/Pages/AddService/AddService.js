@@ -1,8 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddService = () => {
 
+    const notify = () => toast("Successfully added service")
     const addService = event => {
         event.preventDefault();
         const form = event.target;
@@ -14,7 +17,7 @@ const AddService = () => {
         const newService = { serviceName, ratings, price, description, image };
         // console.log(newService);
 
-        fetch('https://mr-photographer-server-shamratpg.vercel.app/services', {
+        fetch('https://mr-photographer-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -24,7 +27,8 @@ const AddService = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                console.log(data)
+                notify();
                 form.reset()
             })
             .catch(error => console.error(error))
@@ -48,7 +52,7 @@ const AddService = () => {
                         <label className="label">
                             <span className="label-text">Name of The Service</span>
                         </label>
-                        <input type="text" placeholder="Service Name" className="input input-bordered w-full max-w-xs" name="serviceName" />
+                        <input type="text" placeholder="Service Name" className="input input-bordered w-full max-w-xs" name="serviceName" required />
                     </div>
 
                     {/* Image */}
@@ -57,7 +61,7 @@ const AddService = () => {
                         <label className="label">
                             <span className="label-text">Image URL</span>
                         </label>
-                        <input type="text" placeholder="Image URL" className="input input-bordered w-full max-w-xs" name="image" />
+                        <input type="text" placeholder="Image URL" className="input input-bordered w-full max-w-xs" name="image" required />
                     </div>
 
                     {/* Rating  */}
@@ -66,7 +70,7 @@ const AddService = () => {
                         <label className="label">
                             <span className="label-text">Ratings</span>
                         </label>
-                        <input type="number" placeholder="Ratings Out of five" className="input input-bordered w-full max-w-xs" name="ratings" min="1" max="5" />
+                        <input type="number" placeholder="Ratings Out of five" className="input input-bordered w-full max-w-xs" name="ratings" min="1" max="5" required />
                     </div>
 
                     {/* Price */}
@@ -75,7 +79,7 @@ const AddService = () => {
                         <label className="label">
                             <span className="label-text">Price</span>
                         </label>
-                        <input type="number" placeholder="$Price" className="input input-bordered w-full max-w-xs" name="price" />
+                        <input type="number" placeholder="$Price" className="input input-bordered w-full max-w-xs" name="price" required />
                     </div>
 
                     {/* Description */}
@@ -84,11 +88,23 @@ const AddService = () => {
                         <label className="label">
                             <span className="label-text">Description</span>
                         </label>
-                        <textarea className="textarea textarea-bordered h-24 w-full" placeholder="Start writing..." name='description'></textarea>
+                        <textarea className="textarea textarea-bordered h-24 w-full" placeholder="Start writing..." name='description' required></textarea>
                     </div>
                 </div>
                 <div className='my-4'>
                     <button className='btn btn-outline'> Add Service</button>
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={5000}
+                        hideProgressBar={true}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss={false}
+                        draggable
+                        pauseOnHover={false}
+                        theme="dark"
+                    />
                 </div>
 
             </form>

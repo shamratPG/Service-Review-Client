@@ -9,7 +9,7 @@ const Contact = () => {
                 <p className='text-gray-600 text-3xl font-semibold md:w-3/4 lg:w-1/2 text-center'>
                     If you have any questions or suggestions, feel free to contact me any time
                 </p>
-                <button className='btn btn-outline rounded-full mt-6'>Contact</button>
+                <button className='btn btn-outline rounded-full mt-6 btn-disabled'>Contact</button>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
                 {

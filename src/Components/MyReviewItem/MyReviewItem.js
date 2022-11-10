@@ -18,7 +18,8 @@ const MyReviewItem = ({ review, deleteItem, updateItem }) => {
                     <img className='rounded-full' src={photoURL} alt="" />
                 </div>
                 <h2 className="card-title">{userName}</h2>
-                <p className='text-justify'>{reviewData}</p>
+                <h2 className="text-lg">Your Review On: <span className='text-yellow-600'>{serviceName}</span></h2>
+                <p className='text-justify text-slate-500'>{reviewData}</p>
 
 
                 <div className='pt-4 flex justify-center'>
