@@ -9,7 +9,6 @@ const LogIn = () => {
     const { logIn, loader } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(loader)
 
     const from = location.state?.from?.pathname || '/';
 

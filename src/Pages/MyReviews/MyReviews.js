@@ -60,7 +60,6 @@ const MyReview = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data.modifiedCount > 0) {
                         const remaining = reviews.filter(review => review._id !== id);
                         const changedItem = reviews.find(review => review._id === id);

@@ -35,13 +35,12 @@ const ThirdPartyAuth = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
                         localStorage.setItem('token', data.token);
                         navigate(from, { replace: true })
                     })
                     .catch(err => console.error(err))
 
-            }).catch(error => console.log(error))
+            }).catch(error => console.error(error))
     }
 
     return (

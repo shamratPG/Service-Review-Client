@@ -74,7 +74,7 @@ const ServiceDetails = () => {
             {/* Service Section  */}
             <h2 className="text-4xl text-center font-semibold mt-12">{serviceName}</h2>
             <div className="card card-compact bg-base-100 shadow-xl my-8 max-w-xl mx-auto">
-                <figure><img className='w-full' src={image} alt="Photography Service" /></figure>
+                <figure><img className='w-full' src={image} alt="Service" /></figure>
                 <div className="card-body">
                     <p className='text-justify'>{description}</p>
                     <div className='my-4 flex justify-between'>

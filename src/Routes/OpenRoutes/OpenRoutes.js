@@ -40,10 +40,9 @@ const routes = createBrowserRouter([
                 path: '/editReview/:id',
                 element: <UpdateReview></UpdateReview>,
                 loader: async ({ params }) => {
-                    return fetch(`https://mr-photographer-server.vercel.app/reviews/${params.id}`, {
+                    return fetch(`https://mr-photographer-server.vercel.app/reviews/update/${params.id}`, {
                         headers: {
                             authorization: `Bearer ${localStorage.getItem('token')}`,
-                            "content-type": "application/json"
                         }
                     })
                 }

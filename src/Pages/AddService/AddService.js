@@ -15,7 +15,6 @@ const AddService = () => {
         const price = form.price.value;
         const description = form.description.value;
         const newService = { serviceName, ratings, price, description, image };
-        // console.log(newService);
 
         fetch('https://mr-photographer-server.vercel.app/services', {
             method: 'POST',
@@ -27,7 +26,6 @@ const AddService = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 notify();
                 form.reset()
             })
