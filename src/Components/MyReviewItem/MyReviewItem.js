@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 const MyReviewItem = ({ review, deleteItem, updateItem }) => {
     const { photoURL, userName, reviewData, serviceName, _id } = review;
-    const handleReviewUpdate = event => {
-        event.preventDefault();
-        const myUpdatedReview = event.target.updatedReview.value;
-        updateItem(_id, serviceName, myUpdatedReview);
-    }
+    // const handleReviewUpdate = event => {
+    //     event.preventDefault();
+    //     const myUpdatedReview = event.target.updatedReview.value;
+    //     updateItem(_id, serviceName, myUpdatedReview);
+    // }
 
 
     return (

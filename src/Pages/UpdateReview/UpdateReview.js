@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const UpdateReview = () => {
     const review = useLoaderData()[0];
+    console.log(review);
     const navigate = useNavigate();
     const { email, photoURL, reviewData, serviceName, userName, _id } = review;
 

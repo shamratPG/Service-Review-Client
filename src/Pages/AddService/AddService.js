@@ -16,7 +16,8 @@ const AddService = () => {
         fetch('http://localhost:5000/services', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(newService)
         })

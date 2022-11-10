@@ -40,7 +40,12 @@ const routes = createBrowserRouter([
                 path: '/editReview/:id',
                 element: <UpdateReview></UpdateReview>,
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/reviews/${params.id}`)
+                    return fetch(`http://localhost:5000/reviews/${params.id}`, {
+                        headers: {
+                            authorization: `Bearer ${localStorage.getItem('token')}`,
+                            "content-type": "application/json"
+                        }
+                    })
                 }
 
             },
