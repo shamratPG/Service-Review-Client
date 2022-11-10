@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { FaTrashAlt, FaPenSquare } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const MyReviewItem = ({ review, deleteItem, updateItem }) => {
-    const [editing, setEditing] = useState(false);
     const { photoURL, userName, reviewData, serviceName, _id } = review;
     const handleReviewUpdate = event => {
         event.preventDefault();
         const myUpdatedReview = event.target.updatedReview.value;
         updateItem(_id, serviceName, myUpdatedReview);
-        setEditing(false);
     }
 
 
@@ -19,22 +18,18 @@ const MyReviewItem = ({ review, deleteItem, updateItem }) => {
                     <img className='rounded-full' src={photoURL} alt="" />
                 </div>
                 <h2 className="card-title">{userName}</h2>
-
-                {
-                    editing ?
-                        <form onSubmit={handleReviewUpdate}>
-                            <textarea className="textarea textarea-bordered h-16 w-full" defaultValue={reviewData} name="updatedReview"></textarea>
-                            <input type='submit' className='btn btn-outline' />
-                        </form> :
-                        <p className='text-justify'>{reviewData}</p>
-
-                }
+                <p className='text-justify'>{reviewData}</p>
 
 
                 <div className='pt-4 flex justify-center'>
                     <FaTrashAlt className='text-2xl mr-4 cursor-pointer' onClick={() => deleteItem(_id, serviceName)}></FaTrashAlt>
 
-                    <FaPenSquare className='text-2xl cursor-pointer' onClick={() => setEditing(!editing)}></FaPenSquare>
+                    <Link to={`/editReview/${_id}`}>
+
+                        <FaPenSquare className='text-2xl cursor-pointer'></FaPenSquare>
+
+                        {/* <FaPenSquare className='text-2xl cursor-pointer' onClick={() => setEditing(!editing)}></FaPenSquare> */}
+                    </Link>
 
                 </div>
             </div>
