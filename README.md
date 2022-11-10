@@ -16,7 +16,7 @@ This is a full stack demo project. I worked on both server and client side and M
 
 ### Screenshot
 
-![](image/screenShot.jpg)
+![](image/screenShot.png)
 
 
 ### Links
