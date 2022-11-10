@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThirdPartyAuth from '../../Components/ThirdPartyAuth/ThirdPartyAuth';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
@@ -49,6 +50,11 @@ const Register = () => {
 
     return (
         <div className='py-12 bg-base-200 px-2'>
+            <Helmet>
+                <title>
+                    Register - Mr. Photographer
+                </title>
+            </Helmet>
             <form onSubmit={handleRegister} className="form-control w-full sm:w-3/5 mx-auto bg-base-100 rounded-lg p-8 py-16 flex justify-center items-center shadow-lg">
                 <h1 className='font-semibold text-2xl'>Register here</h1>
                 <div className='my-5'>

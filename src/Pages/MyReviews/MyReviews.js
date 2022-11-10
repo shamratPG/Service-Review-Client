@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import MyReviewItem from '../../Components/MyReviewItem/MyReviewItem';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
@@ -69,6 +70,11 @@ const MyReview = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>
+                    My Reviews- Mr. Photographer
+                </title>
+            </Helmet>
             {
                 reviews.length === 0 ?
                     <div className='h-[70vh] flex justify-center items-center'>

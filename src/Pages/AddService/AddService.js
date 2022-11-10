@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const AddService = () => {
 
@@ -32,6 +33,11 @@ const AddService = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    Add Service - Mr. Photographer
+                </title>
+            </Helmet>
             <h2 className='text-3xl mt-12 text-center'>Add Service</h2>
             <form onSubmit={addService} className='form-control w-full h-auto flex justify-center items-center my-8'>
                 <div className='grid grid-cols-2 gap-6'>

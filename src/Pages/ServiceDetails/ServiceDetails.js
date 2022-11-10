@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link, useLoaderData } from 'react-router-dom';
 import AddReview from '../../Components/AddReview/AddReview';
 import ReviewItem from '../../Components/ReviewItem/ReviewItem';
@@ -21,6 +22,11 @@ const ServiceDetails = () => {
     }, [service])
     return (
         <div>
+            <Helmet>
+                <title>
+                    Service Details - Mr. Photographer
+                </title>
+            </Helmet>
             {/* Service Section  */}
             <h2 className="text-4xl text-center font-semibold mt-12">{serviceName}</h2>
             <div className="card card-compact bg-base-100 shadow-xl my-8 max-w-xl mx-auto">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const UpdateReview = () => {
@@ -30,6 +31,11 @@ const UpdateReview = () => {
     console.log(review)
     return (
         <div >
+            <Helmet>
+                <title>
+                    Update Review- Mr. Photographer
+                </title>
+            </Helmet>
 
             <div className="card bg-base-100 shadow-xl my-8 max-w-xl mx-auto">
                 <div className="card-body">
