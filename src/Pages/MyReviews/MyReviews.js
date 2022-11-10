@@ -9,7 +9,7 @@ const MyReview = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${user.email}`, {
+        fetch(`https://mr-photographer-server-shamratpg.vercel.app/reviews/${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -29,7 +29,7 @@ const MyReview = () => {
     const deleteItem = (id, name) => {
         const deleteConfirmation = window.confirm(`Are you want to delete your review on "${name}"`);
         if (deleteConfirmation) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://mr-photographer-server-shamratpg.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -48,7 +48,7 @@ const MyReview = () => {
     const updateItem = (id, name, updatedReview) => {
         const confirmUpdate = window.confirm(`Update Your Review on '${name}'`)
         if (confirmUpdate) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://mr-photographer-server-shamratpg.vercel.app/reviews/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'

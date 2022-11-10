@@ -14,7 +14,7 @@ const AddService = () => {
         const newService = { serviceName, ratings, price, description, image };
         // console.log(newService);
 
-        fetch('http://localhost:5000/services', {
+        fetch('https://mr-photographer-server-shamratpg.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

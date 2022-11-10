@@ -14,7 +14,7 @@ const UpdateReview = () => {
         const confirmUpdate = window.confirm(`Update Your Review on '${serviceName}'`)
         const updatedReview = event.target.updatedReview.value;
         if (confirmUpdate) {
-            fetch(`http://localhost:5000/reviews/${_id}`, {
+            fetch(`https://mr-photographer-server-shamratpg.vercel.app/reviews/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'

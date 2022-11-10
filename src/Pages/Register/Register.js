@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -10,12 +9,13 @@ const Register = () => {
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
-    const { createUser } = useContext(AuthContext);
+    const { createUser, addProfile } = useContext(AuthContext);
 
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const photoURL = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
         createUser(email, password)
@@ -23,13 +23,16 @@ const Register = () => {
                 const user = result.user;
                 form.reset();
 
+                //Add user photo and name
+                addProfile(name, photoURL)
+                    .then(() => { }).catch(error => console.error(error));
 
                 // Get JWT token 
                 const currentUser = {
                     email: user.email
                 }
 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://mr-photographer-server-shamratpg.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -60,7 +63,13 @@ const Register = () => {
                 <div className='my-5'>
                     <label className="input-group">
                         <span className='px-8'>Name</span>
-                        <input name='name' type="name" placeholder="Your Name" className="input input-bordered" required />
+                        <input name='name' type="text" placeholder="Your Name" className="input input-bordered" required />
+                    </label>
+                </div>
+                <div className='my-5'>
+                    <label className="input-group">
+                        <span className='px-8'>Photo</span>
+                        <input name='photo' type="text" placeholder="Photo Url" className="input input-bordered" required />
                     </label>
                 </div>
                 <div className='my-5'>

@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layouts/Main/Main";
 import AddService from "../../Pages/AddService/AddService";
@@ -33,14 +32,14 @@ const routes = createBrowserRouter([
                 path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/services/${params.id}`);
+                    return fetch(`https://mr-photographer-server-shamratpg.vercel.app/services/${params.id}`);
                 }
             },
             {
                 path: '/editReview/:id',
                 element: <UpdateReview></UpdateReview>,
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/reviews/${params.id}`, {
+                    return fetch(`https://mr-photographer-server-shamratpg.vercel.app/reviews/${params.id}`, {
                         headers: {
                             authorization: `Bearer ${localStorage.getItem('token')}`,
                             "content-type": "application/json"

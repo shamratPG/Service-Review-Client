@@ -26,7 +26,7 @@ const ThirdPartyAuth = () => {
                     email: user.email
                 }
 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://mr-photographer-server-shamratpg.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"

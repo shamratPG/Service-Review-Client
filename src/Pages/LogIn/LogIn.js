@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -28,7 +27,7 @@ const LogIn = () => {
                     email: user.email
                 }
 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://mr-photographer-server-shamratpg.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"

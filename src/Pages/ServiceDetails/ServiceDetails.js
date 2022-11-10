@@ -13,14 +13,14 @@ const ServiceDetails = () => {
 
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/?serviceId=${_id}`, {
+        fetch(`https://mr-photographer-server-shamratpg.vercel.app/reviews/?serviceId=${_id}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
             .then(res => res.json())
             .then(data => setReviews(data));
-    }, [service])
+    }, [_id])
 
 
     const submitReview = event => {
@@ -46,7 +46,7 @@ const ServiceDetails = () => {
             return alert('Provide a review before submitting')
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://mr-photographer-server-shamratpg.vercel.app/reviews', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newReview)
