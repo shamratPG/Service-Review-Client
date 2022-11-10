@@ -7,6 +7,10 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 const LogIn = () => {
 
     const { logIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogIn = event => {
         event.preventDefault();
@@ -17,6 +21,7 @@ const LogIn = () => {
             .then(result => {
                 const user = result.user;
                 form.reset();
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }

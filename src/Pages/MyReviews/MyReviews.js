@@ -8,27 +8,55 @@ const MyReview = () => {
 
 
     useEffect(() => {
-        fetch(`https://mr-photographer-server-shamratpg.vercel.app/reviews?email=${user?.email}`)
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
             .then(res => res.json())
-            .then(data => setReviews(data));
+            .then(data => {
+                setReviews(data)
+            });
     }, [])
 
 
     const deleteItem = (id, name) => {
         const deleteConfirmation = window.confirm(`Are you want to delete your review on "${name}"`);
         if (deleteConfirmation) {
-            fetch(`https://mr-photographer-server-shamratpg.vercel.app/reviews/${id}`, {
+            fetch(`http://localhost:5000/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert('Review has deleted')
-                        setReviews(reviews.filter(review => review._id !== id))
+                        alert('Review has deleted');
+                        const remaining = reviews.filter(review => review._id !== id);
+                        setReviews(remaining)
                     }
                 })
         }
 
+    }
+
+
+    const updateItem = (id, name, updatedReview) => {
+        const confirmUpdate = window.confirm(`Update Your Review on '${name}'`)
+        if (confirmUpdate) {
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ updatedReview })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.modifiedCount > 0) {
+                        const remaining = reviews.filter(review => review._id !== id);
+                        const changedItem = reviews.find(review => review._id === id);
+                        changedItem.reviewData = updatedReview;
+                        const newReviews = [...remaining, changedItem];
+                        setReviews(newReviews);
+                    }
+                })
+        }
     }
     return (
         <div>
@@ -41,7 +69,8 @@ const MyReview = () => {
                         <h1 className='text-3xl text-center mt-12'>My Reviews</h1>
                         <div>
                             {
-                                reviews.map(review => <MyReviewItem key={review._id} review={review} deleteItem={deleteItem}></MyReviewItem>)
+                                reviews.map(review => <MyReviewItem key={review._id} review={review} deleteItem={deleteItem}
+                                    updateItem={updateItem}></MyReviewItem>)
                             }
                         </div>
                     </div>

@@ -30,7 +30,7 @@ const AddReview = ({ service }) => {
             return alert('Provide a review before submitting')
         }
 
-        fetch('https://mr-photographer-server-shamratpg.vercel.app/reviews', {
+        fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(review)

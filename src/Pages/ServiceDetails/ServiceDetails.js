@@ -11,7 +11,7 @@ const ServiceDetails = () => {
 
 
     useEffect(() => {
-        fetch(`https://mr-photographer-server-shamratpg.vercel.app/reviews?serviceId=${_id}`)
+        fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
             .then(res => res.json())
             .then(data => setReviews(data));
     }, [service])

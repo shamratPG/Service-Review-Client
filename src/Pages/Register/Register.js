@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThirdPartyAuth from '../../Components/ThirdPartyAuth/ThirdPartyAuth';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
 
+    const from = location.state?.from?.pathname || '/';
     const { createUser } = useContext(AuthContext);
 
     const handleRegister = event => {
@@ -19,6 +22,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }

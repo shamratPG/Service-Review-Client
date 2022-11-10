@@ -1,12 +1,16 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const ThirdPartyAuth = () => {
 
     const { providerLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const githubProvider = new GithubAuthProvider()
 
@@ -15,7 +19,7 @@ const ThirdPartyAuth = () => {
     const handleSignIn = provider => {
         providerLogin(provider)
             .then(() => {
-                // navigate(from, { replace: true });
+                navigate(from, { replace: true });
             }).catch(error => console.log(error))
     }
 
