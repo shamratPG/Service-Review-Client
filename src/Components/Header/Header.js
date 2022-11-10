@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { FaCameraRetro } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
@@ -44,7 +45,10 @@ const Header = () => {
 
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+                <Link className="btn btn-ghost normal-case text-xl">
+                    <FaCameraRetro className='pr-2 text-3xl'></FaCameraRetro>
+                    Mr. Photographer
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

@@ -38,7 +38,8 @@ const AddReview = ({ service }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    alert('Successfully added review')
+                    alert('Successfully added review');
+                    event.target.reset();
                 }
             })
             .catch(err => console.error(err))
