@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Contact from "../../Components/Contact/Contact";
 import Main from "../../Layouts/Main/Main";
 import AddService from "../../Pages/AddService/AddService";
 import Blogs from "../../Pages/Blogs/Blogs";

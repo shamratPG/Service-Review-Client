@@ -2,7 +2,7 @@ import React from 'react';
 
 const QuoteSection = () => {
 
-    const image = 'https://i.ibb.co/w4WB7Pb/annie-spratt-hrq-MHFKC6g8-unsplash.jpg';
+    const image = 'https://i.ibb.co/VYn98kP/matt-roskovec-f-B3-u-W-TUcs-unsplash.jpg';
 
     const styles = {
         backgroundImage: `url(${image})`,

@@ -6,11 +6,11 @@ const ServiceSection = () => {
     const [loading, setLoading] = useState(true);
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('https://mr-photographer-server.vercel.app/services?size=3')
+        fetch('https://mr-photographer-server.vercel.app/services')
             .then(res => res.json())
             .then(data => {
                 setLoading(false)
-                setServices(data);
+                setServices(data.reverse().slice(0, 3));
             })
     }, [])
 
@@ -20,7 +20,7 @@ const ServiceSection = () => {
             {
                 loading ?
                     <progress className="progress w-56 my-8"></progress> :
-                    <div className='grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8 w-full'>
+                    <div className='grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8 w-full px-4'>
                         {
                             services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                         }

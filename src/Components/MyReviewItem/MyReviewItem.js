@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaTrashAlt, FaPenSquare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const MyReviewItem = ({ review, deleteItem, updateItem }) => {
         <div className=" bg-base-100 shadow-xl my-8 max-w-xl mx-auto rounded">
             <div className="card-body">
                 <div className="w-12 h-12 ">
-                    <img className='rounded-full' src={photoURL} alt="User Photo" />
+                    <img className='rounded-full' src={photoURL} alt="User" />
                 </div>
                 <h2 className="card-title">{userName}</h2>
                 <h2 className="text-lg">Your Review On: <span className='text-yellow-600'>{serviceName}</span></h2>

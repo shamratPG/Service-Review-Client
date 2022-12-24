@@ -10,7 +10,7 @@ const Services = () => {
             .then(res => res.json())
             .then(data => {
                 setLoading(false);
-                setServices(data);
+                setServices(data.reverse());
             })
     }, [])
     return (
@@ -28,7 +28,7 @@ const Services = () => {
                     loading ?
                         <progress className="progress w-56 my-40"></progress>
                         :
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8 px-'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8 px-4'>
                             {
                                 services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                             }
